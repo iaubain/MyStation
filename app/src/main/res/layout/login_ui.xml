@@ -1,0 +1,111 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="4dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="fragments.LoginFragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center"
+                        android:layout_marginTop="20dp">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="130dp"
+                            android:layout_gravity="center_horizontal"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
+                            android:id="@+id/imageView"
+                            android:src="@drawable/ic_logo" />
+
+                    </TableRow>
+
+
+                    <TableRow
+                        android:layout_marginTop="2dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tableRow">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:weightSum="1">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:textColor="@color/colorDarkGray"
+                                android:id="@+id/tv"
+                                android:gravity="center_horizontal" />
+
+
+                                <android.support.design.widget.TextInputLayout
+                                    android:background="@drawable/edit_text"
+                                    android:padding="8dp"
+                                    android:layout_gravity="center"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <EditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="40dp"
+                                        android:hint="@string/enter_your_pin"
+                                        android:inputType="numberPassword"
+                                        android:id="@+id/pin"
+                                        android:background="@color/colorWhite"
+                                        android:gravity="center"
+                                        android:layout_gravity="center_vertical" />
+                                </android.support.design.widget.TextInputLayout>
+
+                            <Button
+                                android:layout_width="match_parent"
+                                android:layout_height="60dp"
+                                android:layout_below="@+id/pin"
+                                android:text="@string/login"
+                                android:id="@+id/login"
+                                android:textColor="@drawable/blue_text_selector"
+                                android:textSize="30sp"
+                                android:textStyle="bold"
+                                android:background="@drawable/blue_button_selector"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="20dp"
+                                android:onClick="loginFunction" />
+                        </LinearLayout>
+
+                    </TableRow>
+
+                </LinearLayout>
+            </TableRow>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

@@ -1,0 +1,182 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="4dp"
+    tools:context="fragments.RegisterDeviceFragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Register Your Device"
+                android:id="@+id/tv"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Email"
+                android:id="@+id/lblmail"
+                android:layout_marginTop="10dp" />
+
+            <EditText
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:maxLength="30"
+                android:layout_height="40dp"
+                android:layout_marginTop="2dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/edit_text"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:inputType="textEmailAddress"
+                android:ems="10"
+                android:id="@+id/mail" />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Password"
+                android:id="@+id/lblPw"
+                android:layout_marginTop="10dp" />
+
+            <EditText
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_height="40dp"
+                android:layout_marginTop="2dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/edit_text"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:inputType="textPassword"
+                android:ems="10"
+                android:id="@+id/pw"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Device Name"
+                android:id="@+id/lblDevice"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_height="40dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/edit_text"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/devName"
+                android:maxLength="20"
+                android:layout_marginTop="2dp"
+                android:lines="1"
+                android:inputType="text"/>
+            <TextView
+                android:id="@+id/lblDeviceRetype"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Retype Device Name"
+                android:layout_marginTop="10dp"/>
+            <EditText
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_height="40dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/edit_text"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/devNameRetype"
+                android:layout_marginTop="2dp"
+                android:maxLength="20"
+                android:lines="1"
+                android:inputType="text"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Main telephone number"
+                android:id="@+id/lblMsisdn"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_height="40dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/edit_text"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/mainMsisdn"
+                android:maxLength="20"
+                android:layout_marginTop="2dp"
+                android:lines="1"
+                android:inputType="phone"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Other telephon numbers separate by(;)"
+                android:id="@+id/lblAuxMsisdn"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_height="40dp"
+                android:layout_width="match_parent"
+                android:background="@drawable/edit_text"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/auxMsisdn"
+                android:maxLength="20"
+                android:layout_marginTop="2dp"
+                android:lines="1"
+                android:inputType="phone"/>
+            <Button
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="REGISTER DEVICE"
+                android:textColor="@drawable/blue_text_selector"
+                android:background="@drawable/blue_button_selector"
+                android:id="@+id/submit"
+                android:layout_marginTop="20dp"
+                android:onClick="register" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>
