@@ -12,6 +12,7 @@ import com.payfuelpts.oltranz.mystation.R;
 import apiclient.ClientServices;
 import apiclient.ServerClient;
 import config.AppInit;
+import config.BaseUrl;
 import config.OwnerShip;
 import entities.MyDevice;
 import retrofit2.Call;
@@ -46,11 +47,38 @@ public class RegisterDeviceModule {
     }
 
     public void recordDevice(){
+        try {
+            String message="Device name: "+registerRequest.getDeviceName()+"\n";
+            message+="Main Tel: "+registerRequest.getMsisdn()+"\n";
+            message+="Other Tel: "+registerRequest.getAuxMsisdn()+"\n";
+            final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setMessage(message)
+                    .setTitle("Confirm");
+            // Add the buttons
+            builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    dialog.dismiss();
+                    proceed(registerRequest);
+                }
+            });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
+
+
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+            uiPopUp("Error: "+ e.getLocalizedMessage());
+        }
+    }
+
+    public void proceed(final RegisterRequest registerRequest){
         progressDialog.setMessage("Recording device...");
         progressDialog.show();
         try {
             ClientServices clientServices = ServerClient.getClient().create(ClientServices.class);
-            Call<RegisterResponse> callService = clientServices.registerUser(AppInit.APP_VERSION, OwnerShip.CLIENT_NAME, OwnerShip.CLIENT_IDENTIFICATION, registerRequest);
+            Call<RegisterResponse> callService = clientServices.universalPost(AppInit.APP_VERSION, OwnerShip.CLIENT_NAME, OwnerShip.CLIENT_IDENTIFICATION, registerRequest, BaseUrl.REGISTER_URL);
             callService.enqueue(new Callback<RegisterResponse>() {
                 @Override
                 public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
@@ -85,6 +113,7 @@ public class RegisterDeviceModule {
                         myDevice.save();
                     }catch (Exception e){
                         uiPopUp(e.getMessage());
+                        return;
                     }
 
                     if(progressDialog != null)

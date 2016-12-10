@@ -19,23 +19,27 @@ import simplebeans.registerbeans.RegisterResponse;
 /**
  * Created by Owner on 7/9/2016.
  */
-public interface ClientServices {
+public interface ClientServices<T>  {
     //    login client service
     @POST(BaseUrl.LOGIN_URL)
-    Call<LoginResponse> loginUser(@Header(AppInit.APP_VERSION) String version, @Header(OwnerShip.CLIENT_NAME) String clientName, @Header(OwnerShip.CLIENT_IDENTIFICATION) String clientIdentification, @Body LoginRequest loginRequest);
+    Call<LoginResponse> loginUser(@Header(AppInit.APP_VERSION_DESC) String version, @Header(OwnerShip.CLIENT_NAME_DESC) String clientName, @Header(OwnerShip.CLIENT_IDENTIFICATION_DESC) String clientIdentification, @Body LoginRequest loginRequest);
 
     //register client service
     @POST(BaseUrl.REGISTER_URL)
-    Call<RegisterResponse> registerUser(@Header(AppInit.APP_VERSION) String version, @Header(OwnerShip.CLIENT_NAME) String clientName, @Header(OwnerShip.CLIENT_IDENTIFICATION) String clientIdentification, @Body RegisterRequest registerRequest);
+    Call<RegisterResponse> registerUser(@Header(AppInit.APP_VERSION_DESC) String version, @Header(OwnerShip.CLIENT_NAME_DESC) String clientName, @Header(OwnerShip.CLIENT_IDENTIFICATION_DESC) String clientIdentification, @Body RegisterRequest registerRequest);
 
 
     // get Payment modes
     @GET(BaseUrl.GET_PAYMENTS_URL+"{userId}")
-    Call<PaymentModeResponse> getPaymentModes(@Header(AppInit.APP_VERSION) String version, @Header(OwnerShip.CLIENT_NAME) String clientName, @Header(OwnerShip.CLIENT_IDENTIFICATION) String clientIdentification, @Path("userId") int userId);
+    Call<PaymentModeResponse> getPaymentModes(@Header(AppInit.APP_VERSION_DESC) String version, @Header(OwnerShip.CLIENT_NAME_DESC) String clientName, @Header(OwnerShip.CLIENT_IDENTIFICATION_DESC) String clientIdentification, @Path("userId") int userId);
 
     // get Pumps modes
     @GET(BaseUrl.GET_PUMPS_URL+"{userId}")
-    Call<PumpResponse> getPumps(@Header(AppInit.APP_VERSION) String version, @Header(OwnerShip.CLIENT_NAME) String clientName, @Header(OwnerShip.CLIENT_IDENTIFICATION) String clientIdentification, @Path("userId") int userId);
+    Call<PumpResponse> getPumps(@Header(AppInit.APP_VERSION_DESC) String version, @Header(OwnerShip.CLIENT_NAME_DESC) String clientName, @Header(OwnerShip.CLIENT_IDENTIFICATION_DESC) String clientIdentification, @Path("userId") int userId);
+
+
+    @POST("{url}")
+    Call<T> universalPost(@Header(AppInit.APP_VERSION_DESC) String version, @Header(OwnerShip.CLIENT_NAME_DESC) String clientName, @Header(OwnerShip.CLIENT_IDENTIFICATION_DESC) String clientIdentification, @Body Object object, @Path("url") String url);
 //
 //    //topUp Airtime
 //    @POST(BaseUrl.topUpUrl)

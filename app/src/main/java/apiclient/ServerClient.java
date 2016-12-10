@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import config.BaseUrl;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
@@ -18,7 +19,7 @@ public class ServerClient {
             objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
             .configure(JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS, true);
             retrofit = new Retrofit.Builder()
-                    .baseUrl("")
+                    .baseUrl(BaseUrl.BASE_URL)
                     .addConverterFactory(JacksonConverterFactory.create(objectMapper))
                     .build();
         }

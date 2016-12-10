@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -31,6 +32,8 @@ import config.BaseUrl;
 import entities.MyDevice;
 import fragments.LoginFragment;
 import fragments.RegisterDeviceFragment;
+import simplebeans.loginbeans.LoginResponse;
+import utilities.DataFactory;
 
 public class Home extends AppCompatActivity implements LoginFragment.OnLoginInteractionFrag, RegisterDeviceFragment.OnRegisterDeviceFrag {
     private String tag=getClass().getSimpleName();
@@ -55,6 +58,8 @@ public class Home extends AppCompatActivity implements LoginFragment.OnLoginInte
     ImageView register;
     @BindView(R.id.admin)
     ImageView admin;
+    @BindView(R.id.fragment_container)
+    FrameLayout container;
 
     private boolean isRegisterClicked=false;
     private LoginFragment loginFrag;
@@ -72,7 +77,7 @@ public class Home extends AppCompatActivity implements LoginFragment.OnLoginInte
         titleBar.setTypeface(font);
 
         setSupportActionBar(toolbar);
-        if (findViewById(R.id.fragment_container) != null) {
+        if (container != null) {
 
             // However, if we're being restored from a previous state,
             // then we don't need to do anything and should return or else
@@ -117,8 +122,6 @@ public class Home extends AppCompatActivity implements LoginFragment.OnLoginInte
                     }
                 }
             });
-        } else {
-            //popup window
         }
     }
 
@@ -180,14 +183,19 @@ public class Home extends AppCompatActivity implements LoginFragment.OnLoginInte
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     private void setMyTitleBar(Object object){
-        if(object.getClass() == LoginFragment.class)
+        if(object.getClass() == LoginFragment.class){
             titleBar.setText(titleLogin);
-        if(object.getClass() == RegisterDeviceFragment.class)
+            isRegisterClicked = false;
+            register.setBackground(registerIcon);
+        }
+        if(object.getClass() == RegisterDeviceFragment.class){
             titleBar.setText(titleRegister);
+            isRegisterClicked = true;
+            register.setBackground(loginIcon);
+        }
     }
 
     private void fragmentHandler(Object object) {
@@ -233,7 +241,16 @@ public class Home extends AppCompatActivity implements LoginFragment.OnLoginInte
     @Override
     public void onLoginInteraction(int status, String message, Object object) {
         Toast.makeText(this,"Login Note: "+ message, Toast.LENGTH_SHORT).show();
-        //go to next step
+        if(status == 100){
+            LoginResponse loginResponse=(LoginResponse) object;
+            String userData=new DataFactory().mapping(loginResponse.getLoginResponseBean());
+
+            //setting the new intent
+        }else if(status == 0){
+            fragmentHandler(object);
+        }else{
+            uiPopUp(message);
+        }
     }
 
     @Override

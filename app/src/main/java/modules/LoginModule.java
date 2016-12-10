@@ -81,6 +81,7 @@ public class LoginModule {
                         user.save();
                     }catch (Exception e){
                         uiPopUp(e.getMessage());
+                        return;
                     }
 
                     if(progressDialog != null)

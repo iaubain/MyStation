@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/activeUser"
+            android:icon="@drawable/ic_users"
+            android:title="Active pumpist" />
+        <item
+            android:id="@+id/assignedPumps"
+            android:icon="@drawable/ic_search"
+            android:title="My pumps" />
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_exit"
+            android:title="Logout" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/bugReport"
+                android:icon="@drawable/ic_bug"
+                android:title="Bug report" />
+        </menu>
+    </item>
+
+</menu>

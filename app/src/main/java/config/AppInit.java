@@ -5,5 +5,6 @@ package config;
  */
 public class AppInit {
     public static final String INIT_URL="";
-    public static final String APP_VERSION="";
+    public static final String APP_VERSION="1.0.0";
+    public static final String APP_VERSION_DESC="version";
 }
